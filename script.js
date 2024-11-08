@@ -57,14 +57,22 @@ function playSound(key) {
     }
 }
 
-// Focus on the input field when the page loads
-window.onload = function() {
-  const inputField = document.getElementById("keyboardTrigger");
-  inputField.focus();  // Focus to trigger the keyboard
-};
+ // Function to trigger the keyboard
+    function triggerKeyboard() {
+      const inputField = document.getElementById("keyboardTrigger");
+      inputField.style.display = "block";  // Make input field visible if needed
+      inputField.focus();  // Focus on it to trigger the keyboard
+      inputField.style.display = "none";  // Hide input field again after focusing
+    }
 
-// Optionally, you can also focus when the user interacts with the page, for example:
-document.querySelector('.drum').addEventListener('click', function() {
-  const inputField = document.getElementById("keyboardTrigger");
-  inputField.focus();  // Trigger keyboard on interaction
-});
+    // Auto-focus the input field when the page loads (for mobile devices)
+    window.onload = function() {
+      // Check if it's a mobile device
+      if (window.innerWidth <= 768) {
+        triggerKeyboard();  // Trigger the keyboard on mobile devices
+      }
+    };
+
+    // Optionally, you can also focus on the input field on user interaction with the page
+    document.querySelector('.drum').addEventListener('click', function() {
+      triggerKeyboard();  // Trigger the keyboard on interaction
