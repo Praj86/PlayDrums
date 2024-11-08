@@ -56,3 +56,15 @@ function playSound(key) {
 
     }
 }
+
+// Focus on the input field when the page loads
+window.onload = function() {
+  const inputField = document.getElementById("keyboardTrigger");
+  inputField.focus();  // Focus to trigger the keyboard
+};
+
+// Optionally, you can also focus when the user interacts with the page, for example:
+document.querySelector('.drum').addEventListener('click', function() {
+  const inputField = document.getElementById("keyboardTrigger");
+  inputField.focus();  // Trigger keyboard on interaction
+});
